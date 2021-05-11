@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block body_block %}
+<div class="container">
+    <h1>Todo List</h1>
+    <p>Web App built with Django and PostgreSQL</p>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="add" class="btn">
+    </form>
+
+    <div>
+        {% for task in tasks %}
+        {% if todo.task %}
+        <p>{{todo.task}}</p>
+        {% else %}
+        <p>No task</p>
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
