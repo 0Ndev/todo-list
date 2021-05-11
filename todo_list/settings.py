@@ -17,7 +17,7 @@ DEBUG = True
 DEBUG_COLLECTSTATIC = 1
 DISABLE_COLLECTSTATIC = 1
 
-ALLOWED_HOSTS = ['get-it-done-list.herokuapp.com/',
+ALLOWED_HOSTS = ['get-it-done-list.herokuapp.com',
                  'localhost', '127.0.0.1', '0.0.0.0']
 
 
