@@ -1,5 +1,5 @@
 import os
-
+from decouple import config
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
@@ -9,12 +9,16 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-+peuv36=x9*j64rc)l2vlw7u4z4og^i)s%$t7!5bljoy)rr62k'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+DEBUG_COLLECTSTATIC = 1
+DISABLE_COLLECTSTATIC = 1
+
+ALLOWED_HOSTS = ['get-it-done-list.herokuapp.com/',
+                 'localhost', '127.0.0.1', '0.0.0.0']
 
 
 # Application definition
@@ -67,6 +71,12 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        # 'ENGINE': 'django.db.backends.postgresql',
+        # 'NAME': config('DATABASE_NAME'),
+        # 'USER': config('DATABASE_USER'),
+        # 'PASSWORD': config('DATABASE_PASSWORD'),
+        # 'HOST': config('HOST'),
+        # 'PORT': '5432',
     }
 }
 
@@ -108,6 +118,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_DIR = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = [STATIC_DIR, ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfile')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
