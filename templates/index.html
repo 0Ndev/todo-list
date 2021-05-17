@@ -12,13 +12,19 @@
     </form>
 
     <div>
-        {% for task in tasks %}
         {% if task %}
-        <p>{{task}}</p>
+        <ul>
+            {% for task in tasks %}
+            <li>
+                <p>{{task}}</p>
+                <a href="{% url 'updateItem' todo.id %}"><button>edit</button></a>
+                <a href="{% url 'deleteItem' todo.id %}"><button>delete</button></a>
+            </li>
+            {% endfor %}
+        </ul>
         {% else %}
         <p>No task</p>
         {% endif %}
-        {% endfor %}
     </div>
 </div>
 {% endblock %}

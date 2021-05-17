@@ -1,5 +1,4 @@
-from django import forms
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from .models import Todos
 from .forms import TodoForm
 
@@ -19,3 +18,21 @@ def todo_list(request):
 
     # return render(request, 'todo-list.html', {'tasks': tasks, 'form': form})
     return render(request, 'index.html', {'tasks': tasks, 'form': form})
+
+
+def deleteItem(req, pk):
+    task = Todos.objects.get(id = pk)
+    task.delete()
+    return redirect('/')
+
+
+def updateItem(request, pk):
+    todo = Todos.objects.get(id = pk)
+    updateForm = TodoForm(instance=todo)
+    if request.method == 'POST':
+        updateForm = TodoForm(request.POST, instance = todo)
+        if updateForm.is_valid():
+            updateForm.save()
+            return redirect('/')
+    return render(request, 'edit.html', {'todo': todo, 'updateForm': updateForm})
+
