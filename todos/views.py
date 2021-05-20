@@ -20,13 +20,13 @@ def todo_list(request):
     return render(request, 'index.html', {'tasks': tasks, 'form': form})
 
 
-def deleteItem(req, pk):
+def delete_item(req, pk):
     task = Todos.objects.get(id = pk)
     task.delete()
     return redirect('/')
 
 
-def updateItem(request, pk):
+def update_item(request, pk):
     todo = Todos.objects.get(id = pk)
     updateForm = TodoForm(instance=todo)
     if request.method == 'POST':

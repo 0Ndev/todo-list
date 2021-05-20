@@ -3,22 +3,32 @@
 {% block body_block %}
 <div class="container">
     <h1>Todo List</h1>
-    <p>Web App built with Django and PostgreSQL</p>
 
     <form method="POST">
         {% csrf_token %}
         {{form.as_p}}
-        <input type="submit" value="add" class="btn">
+        <button type="submit" class="btn">
+            <i class="fas fa-plus-circle"></i>
+            add
+        </button>
     </form>
 
     <div>
-        {% if task %}
+        {% if tasks %}
         <ul>
             {% for task in tasks %}
             <li>
                 <p>{{task}}</p>
-                <a href="{% url 'updateItem' todo.id %}"><button>edit</button></a>
-                <a href="{% url 'deleteItem' todo.id %}"><button>delete</button></a>
+                <div class="btns">
+                    <a href="{% url 'update_item' task.id %}" class="btn-item btn-edit">
+                        <i class="fas fa-pencil-alt"></i>
+                        edit
+                    </a>
+                    <a href="{% url 'delete_item' task.id %}" class="btn-item btn-delete">
+                        <i class="fas fa-trash-alt"></i>
+                        delete
+                    </a>
+                </div>
             </li>
             {% endfor %}
         </ul>

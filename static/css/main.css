@@ -5,17 +5,68 @@
 
 body {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-image: url('/static/assets/flowers.jpg');
+    /* background-repeat: no-repeat; */
+    background-attachment: fixed;
+    background-position: center; 
 }
 
 .container {
     width: 100vw;
+    min-height: 90vh;
+    padding-top: 1rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 }
 
 form {
     display: flex;
     margin: 2rem;
+}
+
+ul {
+    min-width: 43vw;
+    background-color: rgba(239, 240, 241, 0.8);
+}
+
+li {
+    display: flex;
+    padding: 1rem;
+    border-bottom: 1px solid rgb(184, 181, 181);
+}
+
+li:first-child {
+    border-top: 1px solid rgb(209, 209, 209);
+}
+
+li:nth-child(2) {
+    background-color: rgba(247, 247, 247, 0.5);
+}
+
+.btns {
+    margin-left: auto;
+}
+
+.btn-item {
+    margin-left: 1rem;
+    color: black;
+}
+
+.btn-edit {
+    color: rgb(46, 12, 167);
+}
+
+.btn-delete {
+    color: rgb(158, 22, 74);
+}
+
+footer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: auto;
+    padding: 1rem;
+    background-color: rgba(239, 240, 241, 0.5);
 }
