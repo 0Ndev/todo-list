@@ -165,7 +165,7 @@ footer {
 
 
 .sortable-chosen {
-    box-shadow: 8px 8px 32px #E1E1E1;
+ box-shadow: 5px 6px 8px -4px rgba(250, 249, 249, 0.86);
 }
 
 .sortable-drag {
